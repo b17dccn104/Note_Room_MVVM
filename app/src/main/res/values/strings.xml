@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Notes App</string>
+
+    <string name="warning_message">Title can not be blank</string>
+    <string name="done_message">Got it</string>
+    <string name="search_hint">Enter notes title here…</string>
+    <string name="notes_item">Notes</string>
+</resources>

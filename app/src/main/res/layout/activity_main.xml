@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E8E8E8"
+        tools:context=".ui.activity.MainActivity">
+
+        <TextView
+            android:id="@+id/filter_view"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_margin="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:background="@drawable/ellipse"
+            app:layout_constraintBottom_toTopOf="@id/list_notes_home"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <ImageView
+            android:id="@+id/filter_icon"
+            android:layout_width="15dp"
+            android:layout_height="8dp"
+            android:background="@drawable/image_filter"
+            app:layout_constraintBottom_toBottomOf="@+id/filter_view"
+            app:layout_constraintLeft_toLeftOf="@id/filter_view"
+            app:layout_constraintRight_toRightOf="@id/filter_view"
+            app:layout_constraintTop_toTopOf="@+id/filter_view" />
+
+        <TextView
+            android:id="@+id/no_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="No filter"
+            android:layout_margin="10dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintWidth_percent="0.2"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toTopOf="@id/list_notes_home"
+            app:layout_constraintRight_toRightOf="parent"
+            android:background="@drawable/item_filter"
+            app:layout_constraintLeft_toRightOf="@id/filter_view"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/high_to_low_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="High to low"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintWidth_percent="0.25"
+            app:layout_constraintHorizontal_bias="0"
+            android:background="@drawable/item_filter"
+            app:layout_constraintBottom_toTopOf="@id/list_notes_home"
+            app:layout_constraintLeft_toRightOf="@id/no_filter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/low_to_high_filter"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Low to high"
+            android:layout_marginLeft="10dp"
+            android:gravity="center"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:paddingTop="5dp"
+            android:paddingBottom="5dp"
+            app:layout_constraintWidth_percent="0.25"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toTopOf="@id/list_notes_home"
+            android:background="@drawable/item_filter"
+            app:layout_constraintLeft_toRightOf="@id/high_to_low_filter"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_notes_home"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="60dp"/>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/button_new_notes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_24"
+            android:backgroundTint="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="26dp"
+            android:layout_marginBottom="26dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

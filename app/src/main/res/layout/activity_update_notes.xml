@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="Notes"
+            type="com.example.note_room_mvvm.model.Notes" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E8E8E8"
+        tools:context=".ui.activity.InsertNotes">
+
+        <EditText
+            android:id="@+id/title_update"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="Title..."
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintHeight_percent="0.1"
+            app:layout_constraintTop_toTopOf="parent"
+            android:background="@drawable/edittext_background"
+            android:layout_marginTop="16dp"
+            android:text="@{Notes.noteTitle}"
+            android:padding="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp" />
+
+        <EditText
+            android:id="@+id/sub_title_update"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="Subtitle"
+            android:padding="16dp"
+            android:text="@{Notes.noteSubtitle}"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/edittext_background"
+            app:layout_constraintHeight_percent="0.1"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/title_update" />
+
+        <TextView
+            android:id="@+id/priotity_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Priority"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_update"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="25dp"
+            android:fontFamily="sans-serif-medium"
+            app:layout_constraintLeft_toLeftOf="parent" />
+
+        <ImageView
+            android:id="@+id/green_priority_update"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:src="@drawable/ic_baseline_done_24"
+            android:background="@drawable/green_priority_background"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_update"
+            app:layout_constraintLeft_toRightOf="@id/priotity_update" />
+
+        <ImageView
+            android:id="@+id/yellow_priority_update"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/yellow_priority_background"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_update"
+            app:layout_constraintLeft_toRightOf="@id/green_priority_update" />
+
+        <ImageView
+            android:id="@+id/red_priority_update"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="25dp"
+            android:layout_marginLeft="20dp"
+            android:background="@drawable/red_priority_background"
+            app:layout_constraintTop_toBottomOf="@id/sub_title_update"
+            app:layout_constraintLeft_toRightOf="@id/yellow_priority_update" />
+
+        <EditText
+            android:id="@+id/notes_update"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:hint="Notes"
+            android:padding="16dp"
+            android:fontFamily="sans-serif-medium"
+            android:background="@drawable/edittext_background"
+            app:layout_constraintHeight_percent="0.4"
+            android:gravity="start"
+            android:text="@{Notes.note}"
+            android:layout_marginTop="25dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            app:layout_constraintTop_toBottomOf="@id/priotity_update" />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/done_notes_update"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_done_24"
+            android:backgroundTint="@color/red"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginRight="26dp"
+            android:layout_marginBottom="26dp"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
