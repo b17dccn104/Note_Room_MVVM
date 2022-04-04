@@ -1,63 +1,66 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/bottom_sheet"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-
-    <View
-        android:id="@+id/view_indicator"
-        android:layout_width="0dp"
-        android:layout_height="8dp"
-        android:background="@drawable/delete_indicator"
-        app:layout_constraintWidth_percent="0.25"
-        android:layout_marginTop="10dp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
-
-    <TextView
-        android:id="@+id/text_notify_delete"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/black"
-        android:text="Are you sure want to delete\n this Note?"
-        app:layout_constraintTop_toBottomOf="@id/view_indicator"
-        android:gravity="center"
-        android:textSize="22dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:layout_marginTop="15dp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:id="@+id/bottom_sheet">
 
-    <TextView
-        android:id="@+id/delete_no"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_marginTop="15dp"
-        android:text="NO"
-        android:gravity="center"
-        android:textSize="20dp"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:layout_marginLeft="15dp"
-        android:layout_marginRight="15dp"
-        android:background="@drawable/delete_no"
-        app:layout_constraintTop_toBottomOf="@id/text_notify_delete"/>
+        <View
+            android:id="@+id/view_indicator"
+            android:layout_width="0dp"
+            android:layout_height="8dp"
+            android:background="@drawable/delete_indicator"
+            app:layout_constraintWidth_percent="0.25"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
-    <TextView
-        android:id="@+id/delete_yes"
-        android:layout_width="match_parent"
-        android:layout_height="42dp"
-        android:layout_marginTop="22dp"
-        android:textSize="20dp"
-        android:gravity="center"
-        android:fontFamily="sans-serif-condensed-medium"
-        android:text="YES"
-        android:layout_marginStart="10dp"
-        android:layout_margin="15dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:background="@drawable/delete_yes"
-        app:layout_constraintTop_toBottomOf="@id/delete_no"/>
+        <TextView
+            android:id="@+id/text_notify_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Are you sure want to delete\n this Note?"
+            app:layout_constraintTop_toBottomOf="@id/view_indicator"
+            android:gravity="center"
+            android:textSize="22dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_marginTop="15dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent" />
 
+        <TextView
+            android:id="@+id/delete_no"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="15dp"
+            android:text="NO"
+            android:gravity="center"
+            android:textSize="20dp"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
+            android:background="@drawable/delete_no"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/text_notify_delete" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <TextView
+            android:id="@+id/delete_yes"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="22dp"
+            android:textSize="20dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif-condensed-medium"
+            android:text="YES"
+            android:layout_marginLeft="10dp"
+            android:layout_margin="15dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="@drawable/delete_yes"
+            app:layout_constraintTop_toBottomOf="@id/delete_no" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

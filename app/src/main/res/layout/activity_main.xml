@@ -5,8 +5,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#E8E8E8"
-        tools:context=".ui.activity.MainActivity">
+        android:background="#E8E8E8">
 
         <TextView
             android:id="@+id/filter_view"
@@ -35,8 +34,8 @@
             android:text="No filter"
             android:layout_margin="10dp"
             android:gravity="center"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             app:layout_constraintWidth_percent="0.2"
@@ -54,8 +53,8 @@
             android:text="High to low"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             app:layout_constraintWidth_percent="0.25"
@@ -73,8 +72,8 @@
             android:text="Low to high"
             android:layout_marginLeft="10dp"
             android:gravity="center"
-            android:paddingStart="10dp"
-            android:paddingEnd="10dp"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
             android:paddingTop="5dp"
             android:paddingBottom="5dp"
             app:layout_constraintWidth_percent="0.25"
@@ -98,11 +97,9 @@
             android:src="@drawable/ic_baseline_add_24"
             android:backgroundTint="@color/red"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
             android:layout_marginRight="26dp"
-            android:layout_marginBottom="26dp"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent" />
+            android:layout_marginBottom="26dp"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

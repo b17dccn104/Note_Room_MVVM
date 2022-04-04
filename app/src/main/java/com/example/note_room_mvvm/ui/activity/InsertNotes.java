@@ -89,7 +89,7 @@ public class InsertNotes extends AppCompatActivity {
         });
         snackbar.setActionTextColor(Color.RED);
         View snackBarView = snackbar.getView();
-        TextView textView = (TextView) snackBarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        TextView textView = snackBarView.findViewById(com.google.android.material.R.id.snackbar_text);
         textView.setTextColor(Color.BLACK);
         textView.setAllCaps(true);
         textView.setTextSize(14);

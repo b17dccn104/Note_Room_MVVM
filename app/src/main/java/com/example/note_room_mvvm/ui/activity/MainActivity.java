@@ -74,21 +74,21 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void observeGetAllNotesViewModel() {
-        notesViewModel.getAllNotes.observe(this, notes -> {
+        notesViewModel.getAllNotes().observe(this, notes -> {
             updateRecyclerViewNotes(notes);
             filterNotesList = notes;
-        });
+         });
     }
 
     private void observeFilterHighToLowNotesViewModel() {
-        notesViewModel.filterHighToLow.observe(this, notes -> {
+        notesViewModel.filterHighToLow().observe(this, notes -> {
             updateRecyclerViewNotes(notes);
             filterNotesList = notes;
         });
     }
 
     private void observeFilterLowToHighNotesViewModel() {
-        notesViewModel.filterLowToHigh.observe(this, notes -> {
+        notesViewModel.filterLowToHigh().observe(this, notes -> {
             updateRecyclerViewNotes(notes);
             filterNotesList = notes;
         });

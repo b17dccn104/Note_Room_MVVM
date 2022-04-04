@@ -2,7 +2,6 @@ package com.example.note_room_mvvm.ui.activity;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
@@ -152,7 +151,7 @@ public class UpdateNotes extends AppCompatActivity {
             BottomSheetDialog sheetDialog = new BottomSheetDialog(UpdateNotes.this,
                     R.style.BottomDialogStyle);
             View view = LayoutInflater.from(UpdateNotes.this)
-                    .inflate(R.layout.delete_notes_sheet,(ConstraintLayout)  findViewById(R.id.bottom_sheet));
+                    .inflate(R.layout.delete_notes_sheet,findViewById(R.id.bottom_sheet));
             sheetDialog.setContentView(view);
             TextView noDelete, yesDelete;
             noDelete = view.findViewById(R.id.delete_no);
