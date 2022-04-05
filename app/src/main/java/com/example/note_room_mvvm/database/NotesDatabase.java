@@ -11,9 +11,15 @@ import com.example.note_room_mvvm.model.Notes;
 
 @Database(entities = {Notes.class}, version = 1)
 public abstract class NotesDatabase extends RoomDatabase {
+    /*
+     * Area : Variable
+     */
     public abstract NotesDao notesDao();
     public static NotesDatabase INSTANCE;
 
+    /*
+     * Area : Function
+     */
     public static NotesDatabase getDatabaseInstance(Context context) {
         if (INSTANCE == null) {
             INSTANCE = Room.databaseBuilder(

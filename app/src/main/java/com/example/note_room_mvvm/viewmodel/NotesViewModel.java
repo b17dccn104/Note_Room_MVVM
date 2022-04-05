@@ -8,16 +8,25 @@ import com.example.note_room_mvvm.model.Notes;
 import java.util.List;
 
 public class NotesViewModel extends AndroidViewModel {
+    /*
+     * Area : Variable
+     */
     public NotesRepository notesRepository;
     public MutableLiveData<List<Notes>> allNotes;
     public MutableLiveData<List<Notes>> highToLowNotes;
     public MutableLiveData<List<Notes>> lowToHighNotes;
 
+    /*
+     * Area : Constructor
+     */
     public NotesViewModel(Application application) {
         super(application);
         notesRepository = new NotesRepository(application);
     }
 
+    /*
+     * Area : Function
+     */
     public MutableLiveData<List<Notes>> getAllNotes() {
         allNotes = new MutableLiveData<>();
         allNotes.postValue(notesRepository.getAllNotes());
@@ -40,8 +49,8 @@ public class NotesViewModel extends AndroidViewModel {
         notesRepository.insertNotes(notes);
     }
 
-    public void deleteNotes(int notesId) {
-        notesRepository.deleteNotes(notesId);
+    public void deleteNotes(Notes notes) {
+        notesRepository.deleteNotes(notes);
     }
 
     public void updateNotes(Notes notes) {

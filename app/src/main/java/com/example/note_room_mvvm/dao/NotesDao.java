@@ -1,6 +1,7 @@
 package com.example.note_room_mvvm.dao;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
@@ -24,9 +25,10 @@ public interface NotesDao {
     @Insert
     void insertNotes(Notes... notes);
 
-    @Query("DELETE FROM notes WHERE noteId = :noteId")
-    void deleteNotes(int noteId);
+    @Delete
+    void deleteNotes(Notes notes);
 
     @Update
     void updateNotes(Notes notes);
+
 }

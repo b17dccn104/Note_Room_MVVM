@@ -20,54 +20,35 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class InsertNotes extends AppCompatActivity {
+    /*
+     * Area : Variable
+     */
     private ActivityInsertNotesBinding binding;
     private NotesViewModel notesViewModel;
     private String priority = KeyConstants.GREEN_PRIORITY;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = ActivityInsertNotesBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
-        clickListener();
-    }
-
+    /*
+     * Area : Function
+     */
     private void clickListener() {
-        clickDoneNotes();
-        clickGreenPriority();
-        clickYellowPriority();
-        clickRedPriority();
-    }
-
-    private void clickRedPriority() {
         binding.redPriorityInsert.setOnClickListener(view -> {
             binding.redPriorityInsert.setImageResource(R.drawable.ic_baseline_done_24);
             binding.yellowPriorityInsert.setImageResource(0);
             binding.greenPriorityInsert.setImageResource(0);
             priority = KeyConstants.RED_PRIORITY;
         });
-    }
-
-    private void clickYellowPriority() {
         binding.yellowPriorityInsert.setOnClickListener(view -> {
             binding.redPriorityInsert.setImageResource(0);
             binding.yellowPriorityInsert.setImageResource(R.drawable.ic_baseline_done_24);
             binding.greenPriorityInsert.setImageResource(0);
             priority = KeyConstants.YELLOW_PRIORITY;
         });
-    }
-
-    private void clickGreenPriority() {
         binding.greenPriorityInsert.setOnClickListener(view -> {
             binding.redPriorityInsert.setImageResource(0);
             binding.yellowPriorityInsert.setImageResource(0);
             binding.greenPriorityInsert.setImageResource(R.drawable.ic_baseline_done_24);
             priority = KeyConstants.GREEN_PRIORITY;
         });
-    }
-
-    private void clickDoneNotes() {
         binding.buttonDoneNotes.setOnClickListener(view ->  {
             if (binding.titleInsert.getText().toString().equals("")){
                 showSnackBar();
@@ -79,7 +60,7 @@ public class InsertNotes extends AppCompatActivity {
         });
     }
 
-    public void showSnackBar() {
+    private void showSnackBar() {
         View view = findViewById(R.id.insert_view);
         String message = getString(R.string.warning_message);
         Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_INDEFINITE);
@@ -117,4 +98,15 @@ public class InsertNotes extends AppCompatActivity {
         notesViewModel.insertNotes(note);
     }
 
+    /*
+     * Area : Override
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityInsertNotesBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        clickListener();
+    }
 }

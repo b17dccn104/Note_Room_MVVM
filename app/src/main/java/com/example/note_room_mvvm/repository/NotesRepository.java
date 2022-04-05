@@ -8,13 +8,22 @@ import com.example.note_room_mvvm.model.Notes;
 import java.util.List;
 
 public class NotesRepository {
+    /*
+     * Area : Variable
+     */
     public NotesDao notesDao;
 
+    /*
+     * Area : Constructor
+     */
     public NotesRepository(Application application) {
         NotesDatabase database = NotesDatabase.getDatabaseInstance(application);
         notesDao = database.notesDao();
     }
 
+    /*
+     * Area : Function
+     */
     public List<Notes> getAllNotes() {
         return notesDao.getAllNotes();
     }
@@ -31,8 +40,8 @@ public class NotesRepository {
         notesDao.insertNotes(notes);
     }
 
-    public void deleteNotes(int id) {
-        notesDao.deleteNotes(id);
+    public void deleteNotes(Notes notes) {
+        notesDao.deleteNotes(notes);
     }
 
     public void updateNotes(Notes notes) {

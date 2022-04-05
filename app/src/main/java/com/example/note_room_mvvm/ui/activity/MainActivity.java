@@ -21,19 +21,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    /*
+     * Area : Variable
+     */
     private ActivityMainBinding binding;
     private NotesViewModel notesViewModel;
     private NotesAdapter notesAdapter;
     private List<Notes> filterNotesList;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
-        inIt();
-        clickListener();
-    }
-
+    /*
+     * Area : Function
+     */
     private void inIt() {
         notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
         observeGetAllNotesViewModel();
@@ -41,34 +39,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void clickListener() {
-        clickNewNotes();
-        clickNoFilter();
-        clickHighToLowFilter();
-        clickLowToHighFilter();
-    }
-
-    private void clickLowToHighFilter() {
         binding.lowToHighFilter.setOnClickListener(view -> {
             selectedLowToHighFilter();
             observeFilterLowToHighNotesViewModel();
         });
-    }
-
-    private void clickHighToLowFilter() {
         binding.highToLowFilter.setOnClickListener(view -> {
             selectedHighToLowFilter();
             observeFilterHighToLowNotesViewModel();
         });
-    }
-
-    private void clickNoFilter() {
         binding.noFilter.setOnClickListener(view -> {
             selectedNoFilter();
             observeGetAllNotesViewModel();
         });
-    }
-
-    private void clickNewNotes() {
         binding.buttonNewNotes.setOnClickListener(
                 view -> startActivity(new Intent(MainActivity.this, InsertNotes.class)));
     }
@@ -128,6 +110,17 @@ public class MainActivity extends AppCompatActivity {
         this.notesAdapter.searchNotes(filterName);
     }
 
+    /*
+     * Area : Override
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        inIt();
+        clickListener();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.search_notes, menu);
@@ -147,5 +140,4 @@ public class MainActivity extends AppCompatActivity {
         });
         return super.onCreateOptionsMenu(menu);
     }
-
 }

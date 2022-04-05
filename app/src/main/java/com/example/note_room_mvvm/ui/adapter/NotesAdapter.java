@@ -19,42 +19,27 @@ import com.example.note_room_mvvm.util.KeyConstants;
 import java.util.List;
 
 public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder> {
+    /*
+     * Area : Variable
+     */
     private List<Notes> notesList;
     private final Context context;
 
+    /*
+     * Area : Constructor
+     */
     public NotesAdapter(List<Notes> notesList, Context context) {
         this.notesList = notesList;
         this.context = context;
     }
 
+    /*
+     * Area : Function
+     */
     @SuppressLint("NotifyDataSetChanged")
     public void searchNotes(List<Notes> filterNotesName) {
         this.notesList = filterNotesName;
         notifyDataSetChanged();
-    }
-
-    @NonNull
-    @Override
-    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
-        ItemNotesBinding itemNotesBinding = ItemNotesBinding.inflate(layoutInflater,parent,false);
-        return new MyViewHolder(itemNotesBinding);
-    }
-
-    @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        if (notesList == null) {
-            return;
-        }
-        holder.bindData(position);
-    }
-
-    @Override
-    public int getItemCount() {
-        if (notesList != null) {
-            return notesList.size();
-        }
-        return 0;
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
@@ -96,5 +81,32 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
                     break;
             }
         }
+    }
+
+    /*
+     * Area : Override
+     */
+    @NonNull
+    @Override
+    public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        LayoutInflater layoutInflater = LayoutInflater.from(parent.getContext());
+        ItemNotesBinding itemNotesBinding = ItemNotesBinding.inflate(layoutInflater,parent,false);
+        return new MyViewHolder(itemNotesBinding);
+    }
+
+    @Override
+    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+        if (notesList == null) {
+            return;
+        }
+        holder.bindData(position);
+    }
+
+    @Override
+    public int getItemCount() {
+        if (notesList != null) {
+            return notesList.size();
+        }
+        return 0;
     }
 }

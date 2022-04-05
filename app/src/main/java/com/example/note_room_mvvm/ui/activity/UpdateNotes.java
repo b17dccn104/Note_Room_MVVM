@@ -20,20 +20,17 @@ import com.example.note_room_mvvm.viewmodel.NotesViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 
 public class UpdateNotes extends AppCompatActivity {
+    /*
+     * Area : Variable
+     */
     private ActivityUpdateNotesBinding binding;
     private Notes notesUpdate;
     private NotesViewModel notesViewModel;
     private String priority = "";
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        binding = DataBindingUtil.setContentView(this,R.layout.activity_update_notes);
-        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
-        getDataIntentNotes();
-        clickListener();
-    }
-
+    /*
+     * Area : Function
+     */
     private void getDataIntentNotes() {
         Bundle bundle = getIntent().getExtras();
         if (bundle == null) {
@@ -49,34 +46,18 @@ public class UpdateNotes extends AppCompatActivity {
     }
 
     private void clickListener() {
-        clickUpdateNotes();
-        clickGreenPriority();
-        clickYellowPriority();
-        clickRedPriority();
-    }
-
-    private void clickRedPriority() {
         binding.redPriorityUpdate.setOnClickListener(view -> {
             setImageResourceRed();
             priority = KeyConstants.RED_PRIORITY;
         });
-    }
-
-    private void clickYellowPriority() {
         binding.yellowPriorityUpdate.setOnClickListener(view -> {
             setImageResourceYellow();
             priority = KeyConstants.YELLOW_PRIORITY;
         });
-    }
-
-    private void clickGreenPriority() {
         binding.greenPriorityUpdate.setOnClickListener(view -> {
             setImageResourceGreen();
             priority = KeyConstants.GREEN_PRIORITY;
         });
-    }
-
-    private void clickUpdateNotes() {
         binding.doneNotesUpdate.setOnClickListener(view -> createNotes());
     }
 
@@ -139,6 +120,18 @@ public class UpdateNotes extends AppCompatActivity {
         binding.setNotes(notes);
     }
 
+    /*
+     * Area : Override
+     */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = DataBindingUtil.setContentView(this,R.layout.activity_update_notes);
+        notesViewModel = new ViewModelProvider(this).get(NotesViewModel.class);
+        getDataIntentNotes();
+        clickListener();
+    }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.delete_notes, menu);
@@ -158,7 +151,7 @@ public class UpdateNotes extends AppCompatActivity {
             yesDelete = view.findViewById(R.id.delete_yes);
             noDelete.setOnClickListener(v -> sheetDialog.dismiss());
             yesDelete.setOnClickListener(v -> {
-                notesViewModel.deleteNotes(notesUpdate.noteId);
+                notesViewModel.deleteNotes(notesUpdate);
                 finish();
             });
             sheetDialog.show();
