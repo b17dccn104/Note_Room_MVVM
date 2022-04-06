@@ -52,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
             observeGetAllNotesViewModel();
         });
         binding.buttonNewNotes.setOnClickListener(
-                view -> startActivity(new Intent(MainActivity.this, InsertNotes.class)));
+                view -> startActivity(new Intent(MainActivity.this, InsertNotesActivity.class)));
     }
 
     private void observeGetAllNotesViewModel() {
@@ -117,6 +117,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = DataBindingUtil.setContentView(this,R.layout.activity_main);
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            ArrayList<Notes> arrayList = bundle.getParcelableArrayList(getString(R.string.list_notes));
+            updateRecyclerViewNotes(arrayList);
+        }
         inIt();
         clickListener();
     }

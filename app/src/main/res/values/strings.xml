@@ -5,4 +5,5 @@
     <string name="done_message">Got it</string>
     <string name="search_hint">Enter notes title here…</string>
     <string name="notes_item">Notes</string>
+    <string name="list_notes">List Notes</string>
 </resources>

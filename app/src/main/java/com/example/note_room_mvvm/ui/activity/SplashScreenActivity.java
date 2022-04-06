@@ -10,7 +10,7 @@ import com.example.note_room_mvvm.R;
 
 import java.util.Objects;
 
-public class SplashSreen extends AppCompatActivity {
+public class SplashScreenActivity extends AppCompatActivity {
     /*
      * Area : Override
      */
@@ -27,7 +27,7 @@ public class SplashSreen extends AppCompatActivity {
      */
     private void handleProgressBarOpenApp() {
         new Handler().postDelayed(() -> {
-            startActivity(new Intent(SplashSreen.this, MainActivity.class));
+            startActivity(new Intent(SplashScreenActivity.this, MainActivity.class));
             finish();
         }, 2000);
     }

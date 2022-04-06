@@ -5,6 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProvider;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -18,8 +20,11 @@ import com.example.note_room_mvvm.model.Notes;
 import com.example.note_room_mvvm.util.KeyConstants;
 import com.example.note_room_mvvm.viewmodel.NotesViewModel;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
+import com.google.android.material.snackbar.Snackbar;
 
-public class UpdateNotes extends AppCompatActivity {
+import java.util.ArrayList;
+
+public class UpdateNotesActivity extends AppCompatActivity {
     /*
      * Area : Variable
      */
@@ -58,7 +63,36 @@ public class UpdateNotes extends AppCompatActivity {
             setImageResourceGreen();
             priority = KeyConstants.GREEN_PRIORITY;
         });
-        binding.doneNotesUpdate.setOnClickListener(view -> createNotes());
+        binding.doneNotesUpdate.setOnClickListener(view -> {
+            if (binding.titleUpdate.getText().toString().equals("")) {
+                showSnackBar();
+                binding.titleUpdate.setEnabled(false);
+                binding.subTitleUpdate.setEnabled(false);
+                binding.notesUpdate.setEnabled(false);
+            } else {
+                createNotes();
+            }
+        });
+    }
+
+    private void showSnackBar() {
+        View view = findViewById(R.id.update_view);
+        String message = getString(R.string.warning_message);
+        Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_INDEFINITE);
+        snackbar.setAction(getString(R.string.done_message), v -> {
+            binding.titleUpdate.setEnabled(true);
+            binding.subTitleUpdate.setEnabled(true);
+            binding.notesUpdate.setEnabled(true);
+            snackbar.dismiss();
+        });
+        snackbar.setActionTextColor(Color.RED);
+        View snackBarView = snackbar.getView();
+        TextView textView = snackBarView.findViewById(com.google.android.material.R.id.snackbar_text);
+        textView.setTextColor(Color.BLACK);
+        textView.setAllCaps(true);
+        textView.setTextSize(14);
+        snackBarView.setBackgroundColor(Color.WHITE);
+        snackbar.show();
     }
 
     private void setImageResourceGreen() {
@@ -95,7 +129,18 @@ public class UpdateNotes extends AppCompatActivity {
 
     private void updateNotes(Notes notes) {
         notesViewModel.updateNotes(notes);
-        finish();
+        sentListNotesToMainActivity();
+    }
+
+    private void sentListNotesToMainActivity() {
+        notesViewModel.getAllNotes().observe(this, notes -> {
+            ArrayList<Notes> notesArrayList = new ArrayList<>(notes);
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList(getString(R.string.list_notes), notesArrayList);
+            Intent intent = new Intent(UpdateNotesActivity.this, MainActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        });
     }
 
     private void setImagePriorityInit() {
@@ -141,9 +186,9 @@ public class UpdateNotes extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == R.id.menu_delete) {
-            BottomSheetDialog sheetDialog = new BottomSheetDialog(UpdateNotes.this,
+            BottomSheetDialog sheetDialog = new BottomSheetDialog(UpdateNotesActivity.this,
                     R.style.BottomDialogStyle);
-            View view = LayoutInflater.from(UpdateNotes.this)
+            View view = LayoutInflater.from(UpdateNotesActivity.this)
                     .inflate(R.layout.delete_notes_sheet,findViewById(R.id.bottom_sheet));
             sheetDialog.setContentView(view);
             TextView noDelete, yesDelete;
@@ -152,7 +197,7 @@ public class UpdateNotes extends AppCompatActivity {
             noDelete.setOnClickListener(v -> sheetDialog.dismiss());
             yesDelete.setOnClickListener(v -> {
                 notesViewModel.deleteNotes(notesUpdate);
-                finish();
+                sentListNotesToMainActivity();
             });
             sheetDialog.show();
         }

@@ -10,16 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Note_Room_MVVM">
         <activity
-            android:name=".ui.activity.UpdateNotes"
+            android:name=".ui.activity.UpdateNotesActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.InsertNotes"
+            android:name=".ui.activity.InsertNotesActivity"
             android:exported="false" />
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.activity.SplashSreen"
+            android:name=".ui.activity.SplashScreenActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.note_room_mvvm.R;
 import com.example.note_room_mvvm.databinding.ItemNotesBinding;
 import com.example.note_room_mvvm.model.Notes;
-import com.example.note_room_mvvm.ui.activity.UpdateNotes;
+import com.example.note_room_mvvm.ui.activity.UpdateNotesActivity;
 import com.example.note_room_mvvm.util.KeyConstants;
 import java.util.List;
 
@@ -62,7 +62,7 @@ public class NotesAdapter extends RecyclerView.Adapter<NotesAdapter.MyViewHolder
             itemNotesBinding.itemNotes.setOnClickListener(view -> {
                 Bundle bundle = new Bundle();
                 bundle.putParcelable(context.getString(R.string.notes_item), notes);
-                Intent intent = new Intent(context, UpdateNotes.class);
+                Intent intent = new Intent(context, UpdateNotesActivity.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
             });

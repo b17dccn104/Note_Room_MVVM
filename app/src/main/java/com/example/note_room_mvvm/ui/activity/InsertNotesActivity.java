@@ -3,7 +3,9 @@ package com.example.note_room_mvvm.ui.activity;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProvider;
 
+
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -17,9 +19,9 @@ import com.example.note_room_mvvm.viewmodel.NotesViewModel;
 import com.google.android.material.snackbar.Snackbar;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
-
-public class InsertNotes extends AppCompatActivity {
+public class InsertNotesActivity extends AppCompatActivity {
     /*
      * Area : Variable
      */
@@ -53,10 +55,23 @@ public class InsertNotes extends AppCompatActivity {
             if (binding.titleInsert.getText().toString().equals("")){
                 showSnackBar();
                 binding.titleInsert.setEnabled(false);
+                binding.subTitleInsert.setEnabled(false);
+                binding.notesInsert.setEnabled(false);
             } else {
                 createNotes();
-                finish();
+                sentListNotesToActivity();
             }
+        });
+    }
+
+    private void sentListNotesToActivity() {
+        notesViewModel.getAllNotes().observe(this, notes -> {
+            ArrayList<Notes> notesArrayList = new ArrayList<>(notes);
+            Bundle bundle = new Bundle();
+            bundle.putParcelableArrayList(getString(R.string.list_notes), notesArrayList);
+            Intent intent = new Intent(InsertNotesActivity.this, MainActivity.class);
+            intent.putExtras(bundle);
+            startActivity(intent);
         });
     }
 
@@ -65,7 +80,9 @@ public class InsertNotes extends AppCompatActivity {
         String message = getString(R.string.warning_message);
         Snackbar snackbar = Snackbar.make(view,message,Snackbar.LENGTH_INDEFINITE);
         snackbar.setAction(getString(R.string.done_message), v -> {
-            binding.titleInsert.setEnabled(true       );
+            binding.titleInsert.setEnabled(true);
+            binding.subTitleInsert.setEnabled(true);
+            binding.notesInsert.setEnabled(true);
             snackbar.dismiss();
         });
         snackbar.setActionTextColor(Color.RED);
